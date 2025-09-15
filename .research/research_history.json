@@ -107,7 +107,629 @@
         "COCO Captions val-2017",
         "DrawBench",
         "DreamBooth personalised prompt set"
-      ]
+      ],
+      "external_resources": {
+        "hugging_face": {
+          "models": [
+            {
+              "id": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+              "author": "stable-diffusion-v1-5",
+              "sha": "451f4fe16113bff5a5d2269ed5ad43b0592e9a14",
+              "created_at": "2024-08-30T09:48:48+00:00",
+              "last_modified": "2024-09-07T16:20:30+00:00",
+              "private": false,
+              "gated": false,
+              "disabled": false,
+              "downloads": 2901711,
+              "likes": 800,
+              "siblings": [
+                {
+                  "rfilename": ".gitattributes"
+                },
+                {
+                  "rfilename": "README.md"
+                },
+                {
+                  "rfilename": "feature_extractor/preprocessor_config.json"
+                },
+                {
+                  "rfilename": "model_index.json"
+                },
+                {
+                  "rfilename": "safety_checker/config.json"
+                },
+                {
+                  "rfilename": "safety_checker/model.fp16.safetensors"
+                },
+                {
+                  "rfilename": "safety_checker/model.safetensors"
+                },
+                {
+                  "rfilename": "safety_checker/pytorch_model.bin"
+                },
+                {
+                  "rfilename": "safety_checker/pytorch_model.fp16.bin"
+                },
+                {
+                  "rfilename": "scheduler/scheduler_config.json"
+                }
+              ],
+              "card_data": {
+                "license": "creativeml-openrail-m",
+                "language": [],
+                "tags": [
+                  "stable-diffusion",
+                  "stable-diffusion-diffusers",
+                  "text-to-image"
+                ],
+                "datasets": [],
+                "task_categories": [],
+                "size_categories": [],
+                "metrics": [],
+                "widget": []
+              },
+              "tags": [
+                "diffusers",
+                "safetensors",
+                "stable-diffusion",
+                "stable-diffusion-diffusers",
+                "text-to-image",
+                "arxiv:2207.12598",
+                "arxiv:2112.10752",
+                "arxiv:2103.00020",
+                "arxiv:2205.11487",
+                "arxiv:1910.09700",
+                "license:creativeml-openrail-m",
+                "autotrain_compatible",
+                "endpoints_compatible",
+                "diffusers:StableDiffusionPipeline",
+                "region:us"
+              ],
+              "pipeline_tag": "text-to-image",
+              "library_name": "diffusers",
+              "readme": "---\nlicense: creativeml-openrail-m\ntags:\n- stable-diffusion\n- stable-diffusion-diffusers\n- text-to-image\ninference: true\n---\n\n# Stable Diffusion v1-5 Model Card\n\n### ⚠️ This repository is a mirror of the now deprecated `ruwnayml/stable-diffusion-v1-5`, this repository or organization are not affiliated in any way with RunwayML.\nModifications to the original model card are in <span style=\"color:crimson\">red</span> or <span style=\"color:darkgreen\">green</span>\n\nStable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input.\nFor more information about how Stable Diffusion functions, please have a look at [🤗's Stable Diffusion blog](https://huggingface.co/blog/stable_diffusion).\n\nThe **Stable-Diffusion-v1-5** checkpoint was initialized with the weights of the [Stable-Diffusion-v1-2](https:/steps/huggingface.co/CompVis/stable-diffusion-v1-2) \ncheckpoint and subsequently fine-tuned on 595k steps at resolution 512x512 on \"laion-aesthetics v2 5+\" and 10% dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598).\n\nYou can use this both with the [🧨Diffusers library](https://github.com/huggingface/diffusers) and [RunwayML GitHub repository](https://github.com/runwayml/stable-diffusion) (<span style=\"color:crimson\">now deprecated</span>), <span style=\"color:darkgreen\">ComfyUI, Automatic1111, SD.Next, InvokeAI</span>.\n\n### Use with Diffusers\n```py\nfrom diffusers import StableDiffusionPipeline\nimport torch\n\nmodel_id = \"sd-legacy/stable-diffusion-v1-5\"\npipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)\npipe = pipe.to(\"cuda\")\n\nprompt = \"a photo of an astronaut riding a horse on mars\"\nimage = pipe(prompt).images[0]  \n    \nimage.save(\"astronaut_rides_horse.png\")\n```\nFor more detailed instructions, use-cases and examples in JAX follow the instructions [here](https://github.com/huggingface/diffusers#text-to-image-generation-with-stable-diffusion)\n\n### Use with GitHub Repository <span style=\"color:crimson\">(now deprecated)</span>, <span style=\"color:darkgreen\">ComfyUI or Automatic1111</span>\n\n1. Download the weights \n   - [v1-5-pruned-emaonly.safetensors](https://huggingface.co/sd-legacy/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) - ema-only weight. uses less VRAM - suitable for inference\n   - [v1-5-pruned.safetensors](https://huggingface.co/sd-legacy/stable-diffusion-v1-5/resolve/main/v1-5-pruned.safetensors) - ema+non-ema weights. uses more VRAM - suitable for fine-tuning\n\n2. Follow instructions [here](https://github.com/runwayml/stable-diffusion). <span style=\"color:crimson\">(now deprecated)</span>\n\n3. <span style=\"color:darkgreen\">Use locally with <a href=\"https://github.com/comfyanonymous/ComfyUI\">ComfyUI</a>, <a href=\"https://github.com/AUTOMATIC1111/stable-diffusion-webui\">AUTOMATIC1111</a>, <a href=\"https://github.com/vladmandic/automatic\">SD.Next</a>, <a href=\"https://github.com/invoke-ai/InvokeAI\">InvokeAI</a></span>\n\n## Model Details\n- **Developed by:** Robin Rombach, Patrick Esser\n- **Model type:** Diffusion-based text-to-image generation model\n- **Language(s):** English\n- **License:** [The CreativeML OpenRAIL M license](https://huggingface.co/spaces/CompVis/stable-diffusion-license) is an [Open RAIL M license](https://www.licenses.ai/blog/2022/8/18/naming-convention-of-responsible-ai-licenses), adapted from the work that [BigScience](https://bigscience.huggingface.co/) and [the RAIL Initiative](https://www.licenses.ai/) are jointly carrying in the area of responsible AI licensing. See also [the article about the BLOOM Open RAIL license](https://bigscience.huggingface.co/blog/the-bigscience-rail-license) on which our license is based.\n- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses a fixed, pretrained text encoder ([CLIP ViT-L/14](https://arxiv.org/abs/2103.00020)) as suggested in the [Imagen paper](https://arxiv.org/abs/2205.11487).\n- **Resources for more information:** [GitHub Repository](https://github.com/CompVis/stable-diffusion), [Paper](https://arxiv.org/abs/2112.10752).\n- **Cite as:**\n\n      @InProceedings{Rombach_2022_CVPR,\n          author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj\\\"orn},\n          title     = {High-Resolution Image Synthesis With Latent Diffusion Models},\n          booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},\n          month     = {June},\n          year      = {2022},\n          pages     = {10684-10695}\n      }\n\n# Uses\n\n## Direct Use \nThe model is intended for research purposes only. Possible research areas and\ntasks include\n\n- Safe deployment of models which have the potential to generate harmful content.\n- Probing and understanding the limitations and biases of generative models.\n- Generation of artworks and use in design and other artistic processes.\n- Applications in educational or creative tools.\n- Research on generative models.\n\nExcluded uses are described below.\n\n ### Misuse, Malicious Use, and Out-of-Scope Use\n_Note: This section is taken from the [DALLE-MINI model card](https://huggingface.co/dalle-mini/dalle-mini), but applies in the same way to Stable Diffusion v1_.\n\n\nThe model should not be used to intentionally create or disseminate images that create hostile or alienating environments for people. This includes generating images that people would foreseeably find disturbing, distressing, or offensive; or content that propagates historical or current stereotypes.\n\n#### Out-of-Scope Use\nThe model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model.\n\n#### Misuse and Malicious Use\nUsing the model to generate content that is cruel to individuals is a misuse of this model. This includes, but is not limited to:\n\n- Generating demeaning, dehumanizing, or otherwise harmful representations of people or their environments, cultures, religions, etc.\n- Intentionally promoting or propagating discriminatory content or harmful stereotypes.\n- Impersonating individuals without their consent.\n- Sexual content without consent of the people who might see it.\n- Mis- and disinformation\n- Representations of egregious violence and gore\n- Sharing of copyrighted or licensed material in violation of its terms of use.\n- Sharing content that is an alteration of copyrighted or licensed material in violation of its terms of use.\n\n## Limitations and Bias\n\n### Limitations\n\n- The model does not achieve perfect photorealism\n- The model cannot render legible text\n- The model does not perform well on more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”\n- Faces and people in general may not be generated properly.\n- The model was trained mainly with English captions and will not work as well in other languages.\n- The autoencoding part of the model is lossy\n- The model was trained on a large-scale dataset\n  [LAION-5B](https://laion.ai/blog/laion-5b/) which contains adult material\n  and is not fit for product use without additional safety mechanisms and\n  considerations.\n- No additional measures were used to deduplicate the dataset. As a result, we observe some degree of memorization for images that are duplicated in the training data.\n  The training data can be searched at [https://rom1504.github.io/clip-retrieval/](https://rom1504.github.io/clip-retrieval/) to possibly assist in the detection of memorized images.\n\n### Bias\n\nWhile the capabilities of image generation models are impressive, they can also reinforce or exacerbate social biases. \nStable Diffusion v1 was trained on subsets of [LAION-2B(en)](https://laion.ai/blog/laion-5b/), \nwhich consists of images that are primarily limited to English descriptions. \nTexts and images from communities and cultures that use other languages are likely to be insufficiently accounted for. \nThis affects the overall output of the model, as white and western cultures are often set as the default. Further, the \nability of the model to generate content with non-English prompts is significantly worse than with English-language prompts.\n\n### Safety Module\n\nThe intended use of this model is with the [Safety Checker](https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/stable_diffusion/safety_checker.py) in Diffusers. \nThis checker works by checking model outputs against known hard-coded NSFW concepts.\nThe concepts are intentionally hidden to reduce the likelihood of reverse-engineering this filter.\nSpecifically, the checker compares the class probability of harmful concepts in the embedding space of the `CLIPTextModel` *after generation* of the images. \nThe concepts are passed into the model with the generated image and compared to a hand-engineered weight for each NSFW concept.\n\n\n## Training\n\n**Training Data**\nThe model developers used the following dataset for training the model:\n\n- LAION-2B (en) and subsets thereof (see next section)\n\n**Training Procedure**\nStable Diffusion v1-5 is a latent diffusion model which combines an autoencoder with a diffusion model that is trained in the latent space of the autoencoder. During training, \n\n- Images are encoded through an encoder, which turns images into latent representations. The autoencoder uses a relative downsampling factor of 8 and maps images of shape H x W x 3 to latents of shape H/f x W/f x 4\n- Text prompts are encoded through a ViT-L/14 text-encoder.\n- The non-pooled output of the text encoder is fed into the UNet backbone of the latent diffusion model via cross-attention.\n- The loss is a reconstruction objective between the noise that was added to the latent and the prediction made by the UNet.\n\nCurrently six Stable Diffusion checkpoints are provided, which were trained as follows.\n- [`stable-diffusion-v1-1`](https://huggingface.co/CompVis/stable-diffusion-v1-1): 237,000 steps at resolution `256x256` on [laion2B-en](https://huggingface.co/datasets/laion/laion2B-en).\n  194,000 steps at resolution `512x512` on [laion-high-resolution](https://huggingface.co/datasets/laion/laion-high-resolution) (170M examples from LAION-5B with resolution `>= 1024x1024`).\n- [`stable-diffusion-v1-2`](https://huggingface.co/CompVis/stable-diffusion-v1-2): Resumed from `stable-diffusion-v1-1`.\n  515,000 steps at resolution `512x512` on \"laion-improved-aesthetics\" (a subset of laion2B-en,\nfiltered to images with an original size `>= 512x512`, estimated aesthetics score `> 5.0`, and an estimated watermark probability `< 0.5`. The watermark estimate is from the LAION-5B metadata, the aesthetics score is estimated using an [improved aesthetics estimator](https://github.com/christophschuhmann/improved-aesthetic-predictor)).\n- [`stable-diffusion-v1-3`](https://huggingface.co/CompVis/stable-diffusion-v1-3): Resumed from `stable-diffusion-v1-2` - 195,000 steps at resolution `512x512` on \"laion-improved-aesthetics\" and 10 % dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598).\n- [`stable-diffusion-v1-4`](https://huggingface.co/CompVis/stable-diffusion-v1-4) Resumed from `stable-diffusion-v1-2` - 225,000 steps at resolution `512x512` on \"laion-aesthetics v2 5+\" and 10 % dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598).\n- [`stable-diffusion-v1-5`](https://huggingface.co/sd-legacy/stable-diffusion-v1-5) Resumed from `stable-diffusion-v1-2` - 595,000 steps at resolution `512x512` on \"laion-aesthetics v2 5+\" and 10 % dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598).\n- [`stable-diffusion-inpainting`](https://huggingface.co/sd-legacy/stable-diffusion-inpainting) Resumed from `stable-diffusion-v1-5` - then 440,000 steps of inpainting training at resolution 512x512 on “laion-aesthetics v2 5+” and 10% dropping of the text-conditioning. For inpainting, the UNet has 5 additional input channels (4 for the encoded masked-image and 1 for the mask itself) whose weights were zero-initialized after restoring the non-inpainting checkpoint. During training, we generate synthetic masks and in 25% mask everything.\n\n- **Hardware:** 32 x 8 x A100 GPUs\n- **Optimizer:** AdamW\n- **Gradient Accumulations**: 2\n- **Batch:** 32 x 8 x 2 x 4 = 2048\n- **Learning rate:** warmup to 0.0001 for 10,000 steps and then kept constant\n\n## Evaluation Results \nEvaluations with different classifier-free guidance scales (1.5, 2.0, 3.0, 4.0,\n5.0, 6.0, 7.0, 8.0) and 50 PNDM/PLMS sampling\nsteps show the relative improvements of the checkpoints:\n\n![pareto](https://huggingface.co/CompVis/stable-diffusion/resolve/main/v1-1-to-v1-5.png)\n\nEvaluated using 50 PLMS steps and 10000 random prompts from the COCO2017 validation set, evaluated at 512x512 resolution.  Not optimized for FID scores.\n## Environmental Impact\n\n**Stable Diffusion v1** **Estimated Emissions**\nBased on that information, we estimate the following CO2 emissions using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700). The hardware, runtime, cloud provider, and compute region were utilized to estimate the carbon impact.\n\n- **Hardware Type:** A100 PCIe 40GB\n- **Hours used:** 150000\n- **Cloud Provider:** AWS\n- **Compute Region:** US-east\n- **Carbon Emitted (Power consumption x Time x Carbon produced based on location of power grid):** 11250 kg CO2 eq.\n\n\n## Citation\n\n```bibtex\n    @InProceedings{Rombach_2022_CVPR,\n        author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj\\\"orn},\n        title     = {High-Resolution Image Synthesis With Latent Diffusion Models},\n        booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},\n        month     = {June},\n        year      = {2022},\n        pages     = {10684-10695}\n    }\n```\n\n*This model card was written by: Robin Rombach and Patrick Esser and is based on the [DALL-E Mini model card](https://huggingface.co/dalle-mini/dalle-mini).*",
+              "extracted_code": "from diffusers import StableDiffusionPipeline\nimport torch\n\nmodel_id = \"sd-legacy/stable-diffusion-v1-5\"\npipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)\npipe = pipe.to(\"cuda\")\n\nprompt = \"a photo of an astronaut riding a horse on mars\"\nimage = pipe(prompt).images[0]  \n    \nimage.save(\"astronaut_rides_horse.png\")"
+            },
+            {
+              "id": "stabilityai/stable-diffusion-xl-base-1.0",
+              "author": "stabilityai",
+              "sha": "462165984030d82259a11f4367a4eed129e94a7b",
+              "created_at": "2023-07-25T13:25:51+00:00",
+              "last_modified": "2023-10-30T16:03:47+00:00",
+              "private": false,
+              "gated": false,
+              "disabled": false,
+              "downloads": 2095428,
+              "likes": 6941,
+              "siblings": [
+                {
+                  "rfilename": ".gitattributes"
+                },
+                {
+                  "rfilename": "01.png"
+                },
+                {
+                  "rfilename": "LICENSE.md"
+                },
+                {
+                  "rfilename": "README.md"
+                },
+                {
+                  "rfilename": "comparison.png"
+                },
+                {
+                  "rfilename": "model_index.json"
+                },
+                {
+                  "rfilename": "pipeline.png"
+                },
+                {
+                  "rfilename": "scheduler/scheduler_config.json"
+                },
+                {
+                  "rfilename": "sd_xl_base_1.0.safetensors"
+                },
+                {
+                  "rfilename": "sd_xl_base_1.0_0.9vae.safetensors"
+                }
+              ],
+              "card_data": {
+                "license": "openrail++",
+                "language": [],
+                "tags": [
+                  "text-to-image",
+                  "stable-diffusion"
+                ],
+                "datasets": [],
+                "task_categories": [],
+                "size_categories": [],
+                "metrics": [],
+                "widget": []
+              },
+              "tags": [
+                "diffusers",
+                "onnx",
+                "safetensors",
+                "text-to-image",
+                "stable-diffusion",
+                "arxiv:2307.01952",
+                "arxiv:2211.01324",
+                "arxiv:2108.01073",
+                "arxiv:2112.10752",
+                "license:openrail++",
+                "autotrain_compatible",
+                "endpoints_compatible",
+                "diffusers:StableDiffusionXLPipeline",
+                "region:us"
+              ],
+              "pipeline_tag": "text-to-image",
+              "library_name": "diffusers",
+              "readme": "---\nlicense: openrail++\ntags:\n- text-to-image\n- stable-diffusion\n---\n# SD-XL 1.0-base Model Card\n![row01](01.png)\n\n## Model\n\n![pipeline](pipeline.png)\n\n[SDXL](https://arxiv.org/abs/2307.01952) consists of an [ensemble of experts](https://arxiv.org/abs/2211.01324) pipeline for latent diffusion: \nIn a first step, the base model is used to generate (noisy) latents, \nwhich are then further processed with a refinement model (available here: https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/) specialized for the final denoising steps.\nNote that the base model can be used as a standalone module.\n\nAlternatively, we can use a two-stage pipeline as follows: \nFirst, the base model is used to generate latents of the desired output size. \nIn the second step, we use a specialized high-resolution model and apply a technique called SDEdit (https://arxiv.org/abs/2108.01073, also known as \"img2img\") \nto the latents generated in the first step, using the same prompt. This technique is slightly slower than the first one, as it requires more function evaluations.\n\nSource code is available at https://github.com/Stability-AI/generative-models .\n\n### Model Description\n\n- **Developed by:** Stability AI\n- **Model type:** Diffusion-based text-to-image generative model\n- **License:** [CreativeML Open RAIL++-M License](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md)\n- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses two fixed, pretrained text encoders ([OpenCLIP-ViT/G](https://github.com/mlfoundations/open_clip) and [CLIP-ViT/L](https://github.com/openai/CLIP/tree/main)).\n- **Resources for more information:** Check out our [GitHub Repository](https://github.com/Stability-AI/generative-models) and the [SDXL report on arXiv](https://arxiv.org/abs/2307.01952).\n\n### Model Sources\n\nFor research purposes, we recommend our `generative-models` Github repository (https://github.com/Stability-AI/generative-models), which implements the most popular diffusion frameworks (both training and inference) and for which new functionalities like distillation will be added over time.\n[Clipdrop](https://clipdrop.co/stable-diffusion) provides free SDXL inference.\n\n- **Repository:** https://github.com/Stability-AI/generative-models\n- **Demo:** https://clipdrop.co/stable-diffusion\n\n\n## Evaluation\n![comparison](comparison.png)\nThe chart above evaluates user preference for SDXL (with and without refinement) over SDXL 0.9 and Stable Diffusion 1.5 and 2.1. \nThe SDXL base model performs significantly better than the previous variants, and the model combined with the refinement module achieves the best overall performance.\n\n\n### 🧨 Diffusers \n\nMake sure to upgrade diffusers to >= 0.19.0:\n```\npip install diffusers --upgrade\n```\n\nIn addition make sure to install `transformers`, `safetensors`, `accelerate` as well as the invisible watermark:\n```\npip install invisible_watermark transformers accelerate safetensors\n```\n\nTo just use the base model, you can run:\n\n```py\nfrom diffusers import DiffusionPipeline\nimport torch\n\npipe = DiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-xl-base-1.0\", torch_dtype=torch.float16, use_safetensors=True, variant=\"fp16\")\npipe.to(\"cuda\")\n\n# if using torch < 2.0\n# pipe.enable_xformers_memory_efficient_attention()\n\nprompt = \"An astronaut riding a green horse\"\n\nimages = pipe(prompt=prompt).images[0]\n```\n\nTo use the whole base + refiner pipeline as an ensemble of experts you can run:\n\n```py\nfrom diffusers import DiffusionPipeline\nimport torch\n\n# load both base & refiner\nbase = DiffusionPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-base-1.0\", torch_dtype=torch.float16, variant=\"fp16\", use_safetensors=True\n)\nbase.to(\"cuda\")\nrefiner = DiffusionPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-refiner-1.0\",\n    text_encoder_2=base.text_encoder_2,\n    vae=base.vae,\n    torch_dtype=torch.float16,\n    use_safetensors=True,\n    variant=\"fp16\",\n)\nrefiner.to(\"cuda\")\n\n# Define how many steps and what % of steps to be run on each experts (80/20) here\nn_steps = 40\nhigh_noise_frac = 0.8\n\nprompt = \"A majestic lion jumping from a big stone at night\"\n\n# run both experts\nimage = base(\n    prompt=prompt,\n    num_inference_steps=n_steps,\n    denoising_end=high_noise_frac,\n    output_type=\"latent\",\n).images\nimage = refiner(\n    prompt=prompt,\n    num_inference_steps=n_steps,\n    denoising_start=high_noise_frac,\n    image=image,\n).images[0]\n```\n\nWhen using `torch >= 2.0`, you can improve the inference speed by 20-30% with torch.compile. Simple wrap the unet with torch compile before running the pipeline:\n```py\npipe.unet = torch.compile(pipe.unet, mode=\"reduce-overhead\", fullgraph=True)\n```\n\nIf you are limited by GPU VRAM, you can enable *cpu offloading* by calling `pipe.enable_model_cpu_offload`\ninstead of `.to(\"cuda\")`:\n\n```diff\n- pipe.to(\"cuda\")\n+ pipe.enable_model_cpu_offload()\n```\n\nFor more information on how to use Stable Diffusion XL with `diffusers`, please have a look at [the Stable Diffusion XL Docs](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/stable_diffusion_xl).\n\n### Optimum\n[Optimum](https://github.com/huggingface/optimum) provides a Stable Diffusion pipeline compatible with both [OpenVINO](https://docs.openvino.ai/latest/index.html) and [ONNX Runtime](https://onnxruntime.ai/).\n\n#### OpenVINO\n\nTo install Optimum with the dependencies required for OpenVINO :\n\n```bash\npip install optimum[openvino]\n```\n\nTo load an OpenVINO model and run inference with OpenVINO Runtime, you need to replace `StableDiffusionXLPipeline` with Optimum `OVStableDiffusionXLPipeline`. In case you want to load a PyTorch model and convert it to the OpenVINO format on-the-fly, you can set `export=True`.\n\n```diff\n- from diffusers import StableDiffusionXLPipeline\n+ from optimum.intel import OVStableDiffusionXLPipeline\n\nmodel_id = \"stabilityai/stable-diffusion-xl-base-1.0\"\n- pipeline = StableDiffusionXLPipeline.from_pretrained(model_id)\n+ pipeline = OVStableDiffusionXLPipeline.from_pretrained(model_id)\nprompt = \"A majestic lion jumping from a big stone at night\"\nimage = pipeline(prompt).images[0]\n```\n\nYou can find more examples (such as static reshaping and model compilation) in optimum [documentation](https://huggingface.co/docs/optimum/main/en/intel/inference#stable-diffusion-xl).\n\n\n#### ONNX\n\nTo install Optimum with the dependencies required for ONNX Runtime inference :\n\n```bash\npip install optimum[onnxruntime]\n```\n\nTo load an ONNX model and run inference with ONNX Runtime, you need to replace `StableDiffusionXLPipeline` with Optimum `ORTStableDiffusionXLPipeline`. In case you want to load a PyTorch model and convert it to the ONNX format on-the-fly, you can set `export=True`.\n\n```diff\n- from diffusers import StableDiffusionXLPipeline\n+ from optimum.onnxruntime import ORTStableDiffusionXLPipeline\n\nmodel_id = \"stabilityai/stable-diffusion-xl-base-1.0\"\n- pipeline = StableDiffusionXLPipeline.from_pretrained(model_id)\n+ pipeline = ORTStableDiffusionXLPipeline.from_pretrained(model_id)\nprompt = \"A majestic lion jumping from a big stone at night\"\nimage = pipeline(prompt).images[0]\n```\n\nYou can find more examples in optimum [documentation](https://huggingface.co/docs/optimum/main/en/onnxruntime/usage_guides/models#stable-diffusion-xl).\n\n\n## Uses\n\n### Direct Use\n\nThe model is intended for research purposes only. Possible research areas and tasks include\n\n- Generation of artworks and use in design and other artistic processes.\n- Applications in educational or creative tools.\n- Research on generative models.\n- Safe deployment of models which have the potential to generate harmful content.\n- Probing and understanding the limitations and biases of generative models.\n\nExcluded uses are described below.\n\n### Out-of-Scope Use\n\nThe model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model.\n\n## Limitations and Bias\n\n### Limitations\n\n- The model does not achieve perfect photorealism\n- The model cannot render legible text\n- The model struggles with more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”\n- Faces and people in general may not be generated properly.\n- The autoencoding part of the model is lossy.\n\n### Bias\nWhile the capabilities of image generation models are impressive, they can also reinforce or exacerbate social biases.\n",
+              "extracted_code": "from diffusers import DiffusionPipeline\nimport torch\n\npipe = DiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-xl-base-1.0\", torch_dtype=torch.float16, use_safetensors=True, variant=\"fp16\")\npipe.to(\"cuda\")\n\n# if using torch < 2.0\n# pipe.enable_xformers_memory_efficient_attention()\n\nprompt = \"An astronaut riding a green horse\"\n\nimages = pipe(prompt=prompt).images[0]"
+            },
+            {
+              "id": "stabilityai/stable-diffusion-xl-refiner-1.0",
+              "author": "stabilityai",
+              "sha": "5d4cfe854c9a9a87939ff3653551c2b3c99a4356",
+              "created_at": "2023-07-26T07:38:01+00:00",
+              "last_modified": "2023-09-25T13:42:56+00:00",
+              "private": false,
+              "gated": false,
+              "disabled": false,
+              "downloads": 519674,
+              "likes": 1960,
+              "siblings": [
+                {
+                  "rfilename": ".gitattributes"
+                },
+                {
+                  "rfilename": "01.png"
+                },
+                {
+                  "rfilename": "LICENSE.md"
+                },
+                {
+                  "rfilename": "README.md"
+                },
+                {
+                  "rfilename": "comparison.png"
+                },
+                {
+                  "rfilename": "model_index.json"
+                },
+                {
+                  "rfilename": "pipeline.png"
+                },
+                {
+                  "rfilename": "scheduler/scheduler_config.json"
+                },
+                {
+                  "rfilename": "sd_xl_refiner_1.0.safetensors"
+                },
+                {
+                  "rfilename": "sd_xl_refiner_1.0_0.9vae.safetensors"
+                }
+              ],
+              "card_data": {
+                "license": "openrail++",
+                "language": [],
+                "tags": [
+                  "stable-diffusion",
+                  "image-to-image"
+                ],
+                "datasets": [],
+                "task_categories": [],
+                "size_categories": [],
+                "metrics": [],
+                "widget": []
+              },
+              "tags": [
+                "diffusers",
+                "safetensors",
+                "stable-diffusion",
+                "image-to-image",
+                "arxiv:2307.01952",
+                "arxiv:2211.01324",
+                "arxiv:2108.01073",
+                "arxiv:2112.10752",
+                "license:openrail++",
+                "diffusers:StableDiffusionXLImg2ImgPipeline",
+                "region:us"
+              ],
+              "pipeline_tag": "image-to-image",
+              "library_name": "diffusers",
+              "readme": "---\nlicense: openrail++\ntags:\n- stable-diffusion\n- image-to-image\n---\n# SD-XL 1.0-refiner Model Card\n![row01](01.png)\n\n## Model\n\n![pipeline](pipeline.png)\n\n[SDXL](https://arxiv.org/abs/2307.01952) consists of an [ensemble of experts](https://arxiv.org/abs/2211.01324) pipeline for latent diffusion: \nIn a first step, the base model (available here: https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) is used to generate (noisy) latents, \nwhich are then further processed with a refinement model specialized for the final denoising steps.\nNote that the base model can be used as a standalone module.\n\nAlternatively, we can use a two-stage pipeline as follows: \nFirst, the base model is used to generate latents of the desired output size. \nIn the second step, we use a specialized high-resolution model and apply a technique called SDEdit (https://arxiv.org/abs/2108.01073, also known as \"img2img\") \nto the latents generated in the first step, using the same prompt. This technique is slightly slower than the first one, as it requires more function evaluations.\n\nSource code is available at https://github.com/Stability-AI/generative-models .\n\n### Model Description\n\n- **Developed by:** Stability AI\n- **Model type:** Diffusion-based text-to-image generative model\n- **License:** [CreativeML Open RAIL++-M License](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/blob/main/LICENSE.md)\n- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses two fixed, pretrained text encoders ([OpenCLIP-ViT/G](https://github.com/mlfoundations/open_clip) and [CLIP-ViT/L](https://github.com/openai/CLIP/tree/main)).\n- **Resources for more information:** Check out our [GitHub Repository](https://github.com/Stability-AI/generative-models) and the [SDXL report on arXiv](https://arxiv.org/abs/2307.01952).\n\n### Model Sources\n\nFor research purposes, we recommned our `generative-models` Github repository (https://github.com/Stability-AI/generative-models), which implements the most popoular diffusion frameworks (both training and inference) and for which new functionalities like distillation will be added over time.\n[Clipdrop](https://clipdrop.co/stable-diffusion) provides free SDXL inference.\n\n- **Repository:** https://github.com/Stability-AI/generative-models\n- **Demo:** https://clipdrop.co/stable-diffusion\n\n\n## Evaluation\n![comparison](comparison.png)\nThe chart above evaluates user preference for SDXL (with and without refinement) over SDXL 0.9 and Stable Diffusion 1.5 and 2.1. \nThe SDXL base model performs significantly better than the previous variants, and the model combined with the refinement module achieves the best overall performance.\n\n\n### 🧨 Diffusers \n\nMake sure to upgrade diffusers to >= 0.18.0:\n```\npip install diffusers --upgrade\n```\n\nIn addition make sure to install `transformers`, `safetensors`, `accelerate` as well as the invisible watermark:\n```\npip install invisible_watermark transformers accelerate safetensors\n```\n\nYon can then use the refiner to improve images.\n\n```py\nimport torch\nfrom diffusers import StableDiffusionXLImg2ImgPipeline\nfrom diffusers.utils import load_image\n\npipe = StableDiffusionXLImg2ImgPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-refiner-1.0\", torch_dtype=torch.float16, variant=\"fp16\", use_safetensors=True\n)\npipe = pipe.to(\"cuda\")\nurl = \"https://huggingface.co/datasets/patrickvonplaten/images/resolve/main/aa_xl/000000009.png\"\n\ninit_image = load_image(url).convert(\"RGB\")\nprompt = \"a photo of an astronaut riding a horse on mars\"\nimage = pipe(prompt, image=init_image).images\n```\n\nWhen using `torch >= 2.0`, you can improve the inference speed by 20-30% with torch.compile. Simple wrap the unet with torch compile before running the pipeline:\n```py\npipe.unet = torch.compile(pipe.unet, mode=\"reduce-overhead\", fullgraph=True)\n```\n\nIf you are limited by GPU VRAM, you can enable *cpu offloading* by calling `pipe.enable_model_cpu_offload`\ninstead of `.to(\"cuda\")`:\n\n```diff\n- pipe.to(\"cuda\")\n+ pipe.enable_model_cpu_offload()\n```\n\nFor more advanced use cases, please have a look at [the docs](https://huggingface.co/docs/diffusers/main/en/api/pipelines/stable_diffusion/stable_diffusion_xl).\n\n## Uses\n\n### Direct Use\n\nThe model is intended for research purposes only. Possible research areas and tasks include\n\n- Generation of artworks and use in design and other artistic processes.\n- Applications in educational or creative tools.\n- Research on generative models.\n- Safe deployment of models which have the potential to generate harmful content.\n- Probing and understanding the limitations and biases of generative models.\n\nExcluded uses are described below.\n\n### Out-of-Scope Use\n\nThe model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model.\n\n## Limitations and Bias\n\n### Limitations\n\n- The model does not achieve perfect photorealism\n- The model cannot render legible text\n- The model struggles with more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”\n- Faces and people in general may not be generated properly.\n- The autoencoding part of the model is lossy.\n\n### Bias\nWhile the capabilities of image generation models are impressive, they can also reinforce or exacerbate social biases.",
+              "extracted_code": "import torch\nfrom diffusers import StableDiffusionXLImg2ImgPipeline\nfrom diffusers.utils import load_image\n\npipe = StableDiffusionXLImg2ImgPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-refiner-1.0\", torch_dtype=torch.float16, variant=\"fp16\", use_safetensors=True\n)\npipe = pipe.to(\"cuda\")\nurl = \"https://huggingface.co/datasets/patrickvonplaten/images/resolve/main/aa_xl/000000009.png\"\n\ninit_image = load_image(url).convert(\"RGB\")\nprompt = \"a photo of an astronaut riding a horse on mars\"\nimage = pipe(prompt, image=init_image).images\n\npipes.unet = torch.compile(pipe.unet, mode=\"reduce-overhead\", fullgraph=True)\npipes.enable_model_cpu_offload()\n"
+            },
+            {
+              "id": "stable-diffusion-v1-5/stable-diffusion-v1-5",
+              "author": "stable-diffusion-v1-5",
+              "sha": "451f4fe16113bff5a5d2269ed5ad43b0592e9a14",
+              "created_at": "2024-08-30T09:48:48+00:00",
+              "last_modified": "2024-09-07T16:20:30+00:00",
+              "private": false,
+              "gated": false,
+              "disabled": false,
+              "downloads": 2901711,
+              "likes": 800,
+              "siblings": [
+                {
+                  "rfilename": ".gitattributes"
+                },
+                {
+                  "rfilename": "README.md"
+                },
+                {
+                  "rfilename": "feature_extractor/preprocessor_config.json"
+                },
+                {
+                  "rfilename": "model_index.json"
+                },
+                {
+                  "rfilename": "safety_checker/config.json"
+                },
+                {
+                  "rfilename": "safety_checker/model.fp16.safetensors"
+                },
+                {
+                  "rfilename": "safety_checker/model.safetensors"
+                },
+                {
+                  "rfilename": "safety_checker/pytorch_model.bin"
+                },
+                {
+                  "rfilename": "safety_checker/pytorch_model.fp16.bin"
+                },
+                {
+                  "rfilename": "scheduler/scheduler_config.json"
+                }
+              ],
+              "card_data": {
+                "license": "creativeml-openrail-m",
+                "language": [],
+                "tags": [
+                  "stable-diffusion",
+                  "stable-diffusion-diffusers",
+                  "text-to-image"
+                ],
+                "datasets": [],
+                "task_categories": [],
+                "size_categories": [],
+                "metrics": [],
+                "widget": []
+              },
+              "tags": [
+                "diffusers",
+                "safetensors",
+                "stable-diffusion",
+                "stable-diffusion-diffusers",
+                "text-to-image",
+                "arxiv:2207.12598",
+                "arxiv:2112.10752",
+                "arxiv:2103.00020",
+                "arxiv:2205.11487",
+                "arxiv:1910.09700",
+                "license:creativeml-openrail-m",
+                "autotrain_compatible",
+                "endpoints_compatible",
+                "diffusers:StableDiffusionPipeline",
+                "region:us"
+              ],
+              "pipeline_tag": "text-to-image",
+              "library_name": "diffusers",
+              "readme": "---\nlicense: creativeml-openrail-m\ntags:\n- stable-diffusion\n- stable-diffusion-diffusers\n- text-to-image\ninference: true\n---\n\n# Stable Diffusion v1-5 Model Card\n\n### ⚠️ This repository is a mirror of the now deprecated `ruwnayml/stable-diffusion-v1-5`, this repository or organization are not affiliated in any way with RunwayML.\nModifications to the original model card are in <span style=\"color:crimson\">red</span> or <span style=\"color:darkgreen\">green</span>\n\nStable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input.\nFor more information about how Stable Diffusion functions, please have a look at [🤗's Stable Diffusion blog](https://huggingface.co/blog/stable_diffusion).\n\nThe **Stable-Diffusion-v1-5** checkpoint was initialized with the weights of the [Stable-Diffusion-v1-2](https:/steps/huggingface.co/CompVis/stable-diffusion-v1-2) \ncheckpoint and subsequently fine-tuned on 595k steps at resolution 512x512 on \"laion-aesthetics v2 5+\" and 10% dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598).\n\nYou can use this both with the [🧨Diffusers library](https://github.com/huggingface/diffusers) and [RunwayML GitHub repository](https://github.com/runwayml/stable-diffusion) (<span style=\"color:crimson\">now deprecated</span>), <span style=\"color:darkgreen\">ComfyUI, Automatic1111, SD.Next, InvokeAI</span>.\n\n### Use with Diffusers\n```py\nfrom diffusers import StableDiffusionPipeline\nimport torch\n\nmodel_id = \"sd-legacy/stable-diffusion-v1-5\"\npipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)\npipe = pipe.to(\"cuda\")\n\nprompt = \"a photo of an astronaut riding a horse on mars\"\nimage = pipe(prompt).images[0]  \n    \nimage.save(\"astronaut_rides_horse.png\")\n```\nFor more detailed instructions, use-cases and examples in JAX follow the instructions [here](https://github.com/huggingface/diffusers#text-to-image-generation-with-stable-diffusion)\n\n### Use with GitHub Repository <span style=\"color:crimson\">(now deprecated)</span>, <span style=\"color:darkgreen\">ComfyUI or Automatic1111</span>\n\n1. Download the weights \n   - [v1-5-pruned-emaonly.safetensors](https://huggingface.co/sd-legacy/stable-diffusion-v1-5/resolve/main/v1-5-pruned-emaonly.safetensors) - ema-only weight. uses less VRAM - suitable for inference\n   - [v1-5-pruned.safetensors](https://huggingface.co/sd-legacy/stable-diffusion-v1-5/resolve/main/v1-5-pruned.safetensors) - ema+non-ema weights. uses more VRAM - suitable for fine-tuning\n\n2. Follow instructions [here](https://github.com/runwayml/stable-diffusion). <span style=\"color:crimson\">(now deprecated)</span>\n\n3. <span style=\"color:darkgreen\">Use locally with <a href=\"https://github.com/comfyanonymous/ComfyUI\">ComfyUI</a>, <a href=\"https://github.com/AUTOMATIC1111/stable-diffusion-webui\">AUTOMATIC1111</a>, <a href=\"https://github.com/vladmandic/automatic\">SD.Next</a>, <a href=\"https://github.com/invoke-ai/InvokeAI\">InvokeAI</a></span>\n\n## Model Details\n- **Developed by:** Robin Rombach, Patrick Esser\n- **Model type:** Diffusion-based text-to-image generation model\n- **Language(s):** English\n- **License:** [The CreativeML OpenRAIL M license](https://huggingface.co/spaces/CompVis/stable-diffusion-license) is an [Open RAIL M license](https://www.licenses.ai/blog/2022/8/18/naming-convention-of-responsible-ai-licenses), adapted from the work that [BigScience](https://bigscience.huggingface.co/) and [the RAIL Initiative](https://www.licenses.ai/) are jointly carrying in the area of responsible AI licensing. See also [the article about the BLOOM Open RAIL license](https://bigscience.huggingface.co/blog/the-bigscience-rail-license) on which our license is based.\n- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses a fixed, pretrained text encoder ([CLIP ViT-L/14](https://arxiv.org/abs/2103.00020)) as suggested in the [Imagen paper](https://arxiv.org/abs/2205.11487).\n- **Resources for more information:** [GitHub Repository](https://github.com/CompVis/stable-diffusion), [Paper](https://arxiv.org/abs/2112.10752).\n- **Cite as:**\n\n      @InProceedings{Rombach_2022_CVPR,\n          author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj\\\"orn},\n          title     = {High-Resolution Image Synthesis With Latent Diffusion Models},\n          booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},\n          month     = {June},\n          year      = {2022},\n          pages     = {10684-10695}\n      }\n\n# Uses\n\n## Direct Use \nThe model is intended for research purposes only. Possible research areas and\ntasks include\n\n- Safe deployment of models which have the potential to generate harmful content.\n- Probing and understanding the limitations and biases of generative models.\n- Generation of artworks and use in design and other artistic processes.\n- Applications in educational or creative tools.\n- Research on generative models.\n\nExcluded uses are described below.\n\n ### Misuse, Malicious Use, and Out-of-Scope Use\n_Note: This section is taken from the [DALLE-MINI model card](https://huggingface.co/dalle-mini/dalle-mini), but applies in the same way to Stable Diffusion v1_.\n\n\nThe model should not be used to intentionally create or disseminate images that create hostile or alienating environments for people. This includes generating images that people would foreseeably find disturbing, distressing, or offensive; or content that propagates historical or current stereotypes.\n\n#### Out-of-Scope Use\nThe model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model.\n\n#### Misuse and Malicious Use\nUsing the model to generate content that is cruel to individuals is a misuse of this model. This includes, but is not limited to:\n\n- Generating demeaning, dehumanizing, or otherwise harmful representations of people or their environments, cultures, religions, etc.\n- Intentionally promoting or propagating discriminatory content or harmful stereotypes.\n- Impersonating individuals without their consent.\n- Sexual content without consent of the people who might see it.\n- Mis- and disinformation\n- Representations of egregious violence and gore\n- Sharing of copyrighted or licensed material in violation of its terms of use.\n- Sharing content that is an alteration of copyrighted or licensed material in violation of its terms of use.\n\n## Limitations and Bias\n\n### Limitations\n\n- The model does not achieve perfect photorealism\n- The model cannot render legible text\n- The model does not perform well on more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”\n- Faces and people in general may not be generated properly.\n- The model was trained mainly with English captions and will not work as well in other languages.\n- The autoencoding part of the model is lossy\n- The model was trained on a large-scale dataset\n  [LAION-5B](https://laion.ai/blog/laion-5b/) which contains adult material\n  and is not fit for product use without additional safety mechanisms and\n  considerations.\n- No additional measures were used to deduplicate the dataset. As a result, we observe some degree of memorization for images that are duplicated in the training data.\n  The training data can be searched at [https://rom1504.github.io/clip-retrieval/](https://rom1504.github.io/clip-retrieval/) to possibly assist in the detection of memorized images.\n\n### Bias\n\nWhile the capabilities of image generation models are impressive, they can also reinforce or exacerbate social biases. \nStable Diffusion v1 was trained on subsets of [LAION-2B(en)](https://laion.ai/blog/laion-5b/), \nwhich consists of images that are primarily limited to English descriptions. \nTexts and images from communities and cultures that use other languages are likely to be insufficiently accounted for. \nThis affects the overall output of the model, as white and western cultures are often set as the default. Further, the \nability of the model to generate content with non-English prompts is significantly worse than with English-language prompts.\n\n### Safety Module\n\nThe intended use of this model is with the [Safety Checker](https://github.com/huggingface/diffusers/blob/main/src/diffusers/pipelines/stable_diffusion/safety_checker.py) in Diffusers. \nThis checker works by checking model outputs against known hard-coded NSFW concepts.\nThe concepts are intentionally hidden to reduce the likelihood of reverse-engineering this filter.\nSpecifically, the checker compares the class probability of harmful concepts in the embedding space of the `CLIPTextModel` *after generation* of the images. \nThe concepts are passed into the model with the generated image and compared to a hand-engineered weight for each NSFW concept.\n\n\n## Training\n\n**Training Data**\nThe model developers used the following dataset for training the model:\n\n- LAION-2B (en) and subsets thereof (see next section)\n\n**Training Procedure**\nStable Diffusion v1-5 is a latent diffusion model which combines an autoencoder with a diffusion model that is trained in the latent space of the autoencoder. During training, \n\n- Images are encoded through an encoder, which turns images into latent representations. The autoencoder uses a relative downsampling factor of 8 and maps images of shape H x W x 3 to latents of shape H/f x W/f x 4\n- Text prompts are encoded through a ViT-L/14 text-encoder.\n- The non-pooled output of the text encoder is fed into the UNet backbone of the latent diffusion model via cross-attention.\n- The loss is a reconstruction objective between the noise that was added to the latent and the prediction made by the UNet.\n\nCurrently six Stable Diffusion checkpoints are provided, which were trained as follows.\n- [`stable-diffusion-v1-1`](https://huggingface.co/CompVis/stable-diffusion-v1-1): 237,000 steps at resolution `256x256` on [laion2B-en](https://huggingface.co/datasets/laion/laion2B-en).\n  194,000 steps at resolution `512x512` on [laion-high-resolution](https://huggingface.co/datasets/laion/laion-high-resolution) (170M examples from LAION-5B with resolution `>= 1024x1024`).\n- [`stable-diffusion-v1-2`](https://huggingface.co/CompVis/stable-diffusion-v1-2): Resumed from `stable-diffusion-v1-1`.\n  515,000 steps at resolution `512x512` on \"laion-improved-aesthetics\" (a subset of laion2B-en,\nfiltered to images with an original size `>= 512x512`, estimated aesthetics score `> 5.0`, and an estimated watermark probability `< 0.5`. The watermark estimate is from the LAION-5B metadata, the aesthetics score is estimated using an [improved aesthetics estimator](https://github.com/christophschuhmann/improved-aesthetic-predictor)).\n- [`stable-diffusion-v1-3`](https://huggingface.co/CompVis/stable-diffusion-v1-3): Resumed from `stable-diffusion-v1-2` - 195,000 steps at resolution `512x512` on \"laion-improved-aesthetics\" and 10 % dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598).\n- [`stable-diffusion-v1-4`](https://huggingface.co/CompVis/stable-diffusion-v1-4) Resumed from `stable-diffusion-v1-2` - 225,000 steps at resolution `512x512` on \"laion-aesthetics v2 5+\" and 10 % dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598).\n- [`stable-diffusion-v1-5`](https://huggingface.co/sd-legacy/stable-diffusion-v1-5) Resumed from `stable-diffusion-v1-2` - 595,000 steps at resolution `512x512` on \"laion-aesthetics v2 5+\" and 10 % dropping of the text-conditioning to improve [classifier-free guidance sampling](https://arxiv.org/abs/2207.12598).\n- [`stable-diffusion-inpainting`](https://huggingface.co/sd-legacy/stable-diffusion-inpainting) Resumed from `stable-diffusion-v1-5` - then 440,000 steps of inpainting training at resolution 512x512 on “laion-aesthetics v2 5+” and 10% dropping of the text-conditioning. For inpainting, the UNet has 5 additional input channels (4 for the encoded masked-image and 1 for the mask itself) whose weights were zero-initialized after restoring the non-inpainting checkpoint. During training, we generate synthetic masks and in 25% mask everything.\n\n- **Hardware:** 32 x 8 x A100 GPUs\n- **Optimizer:** AdamW\n- **Gradient Accumulations**: 2\n- **Batch:** 32 x 8 x 2 x 4 = 2048\n- **Learning rate:** warmup to 0.0001 for 10,000 steps and then kept constant\n\n## Evaluation Results \nEvaluations with different classifier-free guidance scales (1.5, 2.0, 3.0, 4.0,\n5.0, 6.0, 7.0, 8.0) and 50 PNDM/PLMS sampling\nsteps show the relative improvements of the checkpoints:\n\n![pareto](https://huggingface.co/CompVis/stable-diffusion/resolve/main/v1-1-to-v1-5.png)\n\nEvaluated using 50 PLMS steps and 10000 random prompts from the COCO2017 validation set, evaluated at 512x512 resolution.  Not optimized for FID scores.\n## Environmental Impact\n\n**Stable Diffusion v1** **Estimated Emissions**\nBased on that information, we estimate the following CO2 emissions using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700). The hardware, runtime, cloud provider, and compute region were utilized to estimate the carbon impact.\n\n- **Hardware Type:** A100 PCIe 40GB\n- **Hours used:** 150000\n- **Cloud Provider:** AWS\n- **Compute Region:** US-east\n- **Carbon Emitted (Power consumption x Time x Carbon produced based on location of power grid):** 11250 kg CO2 eq.\n\n\n## Citation\n\n```bibtex\n    @InProceedings{Rombach_2022_CVPR,\n        author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj\\\"orn},\n        title     = {High-Resolution Image Synthesis With Latent Diffusion Models},\n        booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},\n        month     = {June},\n        year      = {2022},\n        pages     = {10684-10695}\n    }\n```\n\n*This model card was written by: Robin Rombach and Patrick Esser and is based on the [DALL-E Mini model card](https://huggingface.co/dalle-mini/dalle-mini).*",
+              "extracted_code": "from diffusers import StableDiffusionPipeline\nimport torch\n\nmodel_id = \"sd-legacy/stable-diffusion-v1-5\"\npipe = StableDiffusionPipeline.from_pretrained(model_id, torch_dtype=torch.float16)\npipe = pipe.to(\"cuda\")\n\nprompt = \"a photo of an astronaut riding a horse on mars\"\nimage = pipe(prompt).images[0]  \n    \nimage.save(\"astronaut_rides_horse.png\")"
+            },
+            {
+              "id": "stabilityai/stable-diffusion-xl-base-1.0",
+              "author": "stabilityai",
+              "sha": "462165984030d82259a11f4367a4eed129e94a7b",
+              "created_at": "2023-07-25T13:25:51+00:00",
+              "last_modified": "2023-10-30T16:03:47+00:00",
+              "private": false,
+              "gated": false,
+              "disabled": false,
+              "downloads": 2095428,
+              "likes": 6941,
+              "siblings": [
+                {
+                  "rfilename": ".gitattributes"
+                },
+                {
+                  "rfilename": "01.png"
+                },
+                {
+                  "rfilename": "LICENSE.md"
+                },
+                {
+                  "rfilename": "README.md"
+                },
+                {
+                  "rfilename": "comparison.png"
+                },
+                {
+                  "rfilename": "model_index.json"
+                },
+                {
+                  "rfilename": "pipeline.png"
+                },
+                {
+                  "rfilename": "scheduler/scheduler_config.json"
+                },
+                {
+                  "rfilename": "sd_xl_base_1.0.safetensors"
+                },
+                {
+                  "rfilename": "sd_xl_base_1.0_0.9vae.safetensors"
+                }
+              ],
+              "card_data": {
+                "license": "openrail++",
+                "language": [],
+                "tags": [
+                  "text-to-image",
+                  "stable-diffusion"
+                ],
+                "datasets": [],
+                "task_categories": [],
+                "size_categories": [],
+                "metrics": [],
+                "widget": []
+              },
+              "tags": [
+                "diffusers",
+                "onnx",
+                "safetensors",
+                "text-to-image",
+                "stable-diffusion",
+                "arxiv:2307.01952",
+                "arxiv:2211.01324",
+                "arxiv:2108.01073",
+                "arxiv:2112.10752",
+                "license:openrail++",
+                "autotrain_compatible",
+                "endpoints_compatible",
+                "diffusers:StableDiffusionXLPipeline",
+                "region:us"
+              ],
+              "pipeline_tag": "text-to-image",
+              "library_name": "diffusers",
+              "readme": "---\nlicense: openrail++\ntags:\n- text-to-image\n- stable-diffusion\n---\n# SD-XL 1.0-base Model Card\n![row01](01.png)\n\n## Model\n\n![pipeline](pipeline.png)\n\n[SDXL](https://arxiv.org/abs/2307.01952) consists of an [ensemble of experts](https://arxiv.org/abs/2211.01324) pipeline for latent diffusion: \nIn a first step, the base model is used to generate (noisy) latents, \nwhich are then further processed with a refinement model (available here: https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/) specialized for the final denoising steps.\nNote that the base model can be used as a standalone module.\n\nAlternatively, we can use a two-stage pipeline as follows: \nFirst, the base model is used to generate latents of the desired output size. \nIn the second step, we use a specialized high-resolution model and apply a technique called SDEdit (https://arxiv.org/abs/2108.01073, also known as \"img2img\") \nto the latents generated in the first step, using the same prompt. This technique is slightly slower than the first one, as it requires more function evaluations.\n\nSource code is available at https://github.com/Stability-AI/generative-models .\n\n### Model Description\n\n- **Developed by:** Stability AI\n- **Model type:** Diffusion-based text-to-image generative model\n- **License:** [CreativeML Open RAIL++-M License](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/blob/main/LICENSE.md)\n- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses two fixed, pretrained text encoders ([OpenCLIP-ViT/G](https://github.com/mlfoundations/open_clip) and [CLIP-ViT/L](https://github.com/openai/CLIP/tree/main)).\n- **Resources for more information:** Check out our [GitHub Repository](https://github.com/Stability-AI/generative-models) and the [SDXL report on arXiv](https://arxiv.org/abs/2307.01952).\n\n### Model Sources\n\nFor research purposes, we recommend our `generative-models` Github repository (https://github.com/Stability-AI/generative-models), which implements the most popular diffusion frameworks (both training and inference) and for which new functionalities like distillation will be added over time.\n[Clipdrop](https://clipdrop.co/stable-diffusion) provides free SDXL inference.\n\n- **Repository:** https://github.com/Stability-AI/generative-models\n- **Demo:** https://clipdrop.co/stable-diffusion\n\n\n## Evaluation\n![comparison](comparison.png)\nThe chart above evaluates user preference for SDXL (with and without refinement) over SDXL 0.9 and Stable Diffusion 1.5 and 2.1. \nThe SDXL base model performs significantly better than the previous variants, and the model combined with the refinement module achieves the best overall performance.\n\n\n### 🧨 Diffusers \n\nMake sure to upgrade diffusers to >= 0.19.0:\n```\npip install diffusers --upgrade\n```\n\nIn addition make sure to install `transformers`, `safetensors`, `accelerate` as well as the invisible watermark:\n```\npip install invisible_watermark transformers accelerate safetensors\n```\n\nTo just use the base model, you can run:\n\n```py\nfrom diffusers import DiffusionPipeline\nimport torch\n\npipe = DiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-xl-base-1.0\", torch_dtype=torch.float16, use_safetensors=True, variant=\"fp16\")\npipe.to(\"cuda\")\n\n# if using torch < 2.0\n# pipe.enable_xformers_memory_efficient_attention()\n\nprompt = \"An astronaut riding a green horse\"\n\nimages = pipe(prompt=prompt).images[0]\n```\n\nTo use the whole base + refiner pipeline as an ensemble of experts you can run:\n\n```py\nfrom diffusers import DiffusionPipeline\nimport torch\n\n# load both base & refiner\nbase = DiffusionPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-base-1.0\", torch_dtype=torch.float16, variant=\"fp16\", use_safetensors=True\n)\nbase.to(\"cuda\")\nrefiner = DiffusionPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-refiner-1.0\",\n    text_encoder_2=base.text_encoder_2,\n    vae=base.vae,\n    torch_dtype=torch.float16,\n    use_safetensors=True,\n    variant=\"fp16\",\n)\nrefiner.to(\"cuda\")\n\n# Define how many steps and what % of steps to be run on each experts (80/20) here\nn_steps = 40\nhigh_noise_frac = 0.8\n\nprompt = \"A majestic lion jumping from a big stone at night\"\n\n# run both experts\nimage = base(\n    prompt=prompt,\n    num_inference_steps=n_steps,\n    denoising_end=high_noise_frac,\n    output_type=\"latent\",\n).images\nimage = refiner(\n    prompt=prompt,\n    num_inference_steps=n_steps,\n    denoising_start=high_noise_frac,\n    image=image,\n).images[0]\n```\n\nWhen using `torch >= 2.0`, you can improve the inference speed by 20-30% with torch.compile. Simple wrap the unet with torch compile before running the pipeline:\n```py\npipe.unet = torch.compile(pipe.unet, mode=\"reduce-overhead\", fullgraph=True)\n```\n\nIf you are limited by GPU VRAM, you can enable *cpu offloading* by calling `pipe.enable_model_cpu_offload`\ninstead of `.to(\"cuda\")`:\n\n```diff\n- pipe.to(\"cuda\")\n+ pipe.enable_model_cpu_offload()\n```\n\nFor more information on how to use Stable Diffusion XL with `diffusers`, please have a look at [the Stable Diffusion XL Docs](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/stable_diffusion_xl).\n\n### Optimum\n[Optimum](https://github.com/huggingface/optimum) provides a Stable Diffusion pipeline compatible with both [OpenVINO](https://docs.openvino.ai/latest/index.html) and [ONNX Runtime](https://onnxruntime.ai/).\n\n#### OpenVINO\n\nTo install Optimum with the dependencies required for OpenVINO :\n\n```bash\npip install optimum[openvino]\n```\n\nTo load an OpenVINO model and run inference with OpenVINO Runtime, you need to replace `StableDiffusionXLPipeline` with Optimum `OVStableDiffusionXLPipeline`. In case you want to load a PyTorch model and convert it to the OpenVINO format on-the-fly, you can set `export=True`.\n\n```diff\n- from diffusers import StableDiffusionXLPipeline\n+ from optimum.intel import OVStableDiffusionXLPipeline\n\nmodel_id = \"stabilityai/stable-diffusion-xl-base-1.0\"\n- pipeline = StableDiffusionXLPipeline.from_pretrained(model_id)\n+ pipeline = OVStableDiffusionXLPipeline.from_pretrained(model_id)\nprompt = \"A majestic lion jumping from a big stone at night\"\nimage = pipeline(prompt).images[0]\n```\n\nYou can find more examples (such as static reshaping and model compilation) in optimum [documentation](https://huggingface.co/docs/optimum/main/en/intel/inference#stable-diffusion-xl).\n\n\n#### ONNX\n\nTo install Optimum with the dependencies required for ONNX Runtime inference :\n\n```bash\npip install optimum[onnxruntime]\n```\n\nTo load an ONNX model and run inference with ONNX Runtime, you need to replace `StableDiffusionXLPipeline` with Optimum `ORTStableDiffusionXLPipeline`. In case you want to load a PyTorch model and convert it to the ONNX format on-the-fly, you can set `export=True`.\n\n```diff\n- from diffusers import StableDiffusionXLPipeline\n+ from optimum.onnxruntime import ORTStableDiffusionXLPipeline\n\nmodel_id = \"stabilityai/stable-diffusion-xl-base-1.0\"\n- pipeline = StableDiffusionXLPipeline.from_pretrained(model_id)\n+ pipeline = ORTStableDiffusionXLPipeline.from_pretrained(model_id)\nprompt = \"A majestic lion jumping from a big stone at night\"\nimage = pipeline(prompt).images[0]\n```\n\nYou can find more examples in optimum [documentation](https://huggingface.co/docs/optimum/main/en/onnxruntime/usage_guides/models#stable-diffusion-xl).\n\n\n## Uses\n\n### Direct Use\n\nThe model is intended for research purposes only. Possible research areas and tasks include\n\n- Generation of artworks and use in design and other artistic processes.\n- Applications in educational or creative tools.\n- Research on generative models.\n- Safe deployment of models which have the potential to generate harmful content.\n- Probing and understanding the limitations and biases of generative models.\n\nExcluded uses are described below.\n\n### Out-of-Scope Use\n\nThe model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model.\n\n## Limitations and Bias\n\n### Limitations\n\n- The model does not achieve perfect photorealism\n- The model cannot render legible text\n- The model struggles with more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”\n- Faces and people in general may not be generated properly.\n- The autoencoding part of the model is lossy.\n\n### Bias\nWhile the capabilities of image generation models are impressive, they can also reinforce or exacerbate social biases.\n",
+              "extracted_code": "from diffusers import DiffusionPipeline\nimport torch\n\npipe = DiffusionPipeline.from_pretrained(\"stabilityai/stable-diffusion-xl-base-1.0\", torch_dtype=torch.float16, use_safetensors=True, variant=\"fp16\")\npipe.to(\"cuda\")\n\n# if using torch < 2.0\n# pipe.enable_xformers_memory_efficient_attention()\n\nprompt = \"An astronaut riding a green horse\"\n\nimages = pipe(prompt=prompt).images[0]"
+            },
+            {
+              "id": "stabilityai/stable-diffusion-xl-refiner-1.0",
+              "author": "stabilityai",
+              "sha": "5d4cfe854c9a9a87939ff3653551c2b3c99a4356",
+              "created_at": "2023-07-26T07:38:01+00:00",
+              "last_modified": "2023-09-25T13:42:56+00:00",
+              "private": false,
+              "gated": false,
+              "disabled": false,
+              "downloads": 519674,
+              "likes": 1960,
+              "siblings": [
+                {
+                  "rfilename": ".gitattributes"
+                },
+                {
+                  "rfilename": "01.png"
+                },
+                {
+                  "rfilename": "LICENSE.md"
+                },
+                {
+                  "rfilename": "README.md"
+                },
+                {
+                  "rfilename": "comparison.png"
+                },
+                {
+                  "rfilename": "model_index.json"
+                },
+                {
+                  "rfilename": "pipeline.png"
+                },
+                {
+                  "rfilename": "scheduler/scheduler_config.json"
+                },
+                {
+                  "rfilename": "sd_xl_refiner_1.0.safetensors"
+                },
+                {
+                  "rfilename": "sd_xl_refiner_1.0_0.9vae.safetensors"
+                }
+              ],
+              "card_data": {
+                "license": "openrail++",
+                "language": [],
+                "tags": [
+                  "stable-diffusion",
+                  "image-to-image"
+                ],
+                "datasets": [],
+                "task_categories": [],
+                "size_categories": [],
+                "metrics": [],
+                "widget": []
+              },
+              "tags": [
+                "diffusers",
+                "safetensors",
+                "stable-diffusion",
+                "image-to-image",
+                "arxiv:2307.01952",
+                "arxiv:2211.01324",
+                "arxiv:2108.01073",
+                "arxiv:2112.10752",
+                "license:openrail++",
+                "diffusers:StableDiffusionXLImg2ImgPipeline",
+                "region:us"
+              ],
+              "pipeline_tag": "image-to-image",
+              "library_name": "diffusers",
+              "readme": "---\nlicense: openrail++\ntags:\n- stable-diffusion\n- image-to-image\n---\n# SD-XL 1.0-refiner Model Card\n![row01](01.png)\n\n## Model\n\n![pipeline](pipeline.png)\n\n[SDXL](https://arxiv.org/abs/2307.01952) consists of an [ensemble of experts](https://arxiv.org/abs/2211.01324) pipeline for latent diffusion: \nIn a first step, the base model (available here: https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0) is used to generate (noisy) latents, \nwhich are then further processed with a refinement model specialized for the final denoising steps.\nNote that the base model can be used as a standalone module.\n\nAlternatively, we can use a two-stage pipeline as follows: \nFirst, the base model is used to generate latents of the desired output size. \nIn the second step, we use a specialized high-resolution model and apply a technique called SDEdit (https://arxiv.org/abs/2108.01073, also known as \"img2img\") \nto the latents generated in the first step, using the same prompt. This technique is slightly slower than the first one, as it requires more function evaluations.\n\nSource code is available at https://github.com/Stability-AI/generative-models .\n\n### Model Description\n\n- **Developed by:** Stability AI\n- **Model type:** Diffusion-based text-to-image generative model\n- **License:** [CreativeML Open RAIL++-M License](https://huggingface.co/stabilityai/stable-diffusion-xl-refiner-1.0/blob/main/LICENSE.md)\n- **Model Description:** This is a model that can be used to generate and modify images based on text prompts. It is a [Latent Diffusion Model](https://arxiv.org/abs/2112.10752) that uses two fixed, pretrained text encoders ([OpenCLIP-ViT/G](https://github.com/mlfoundations/open_clip) and [CLIP-ViT/L](https://github.com/openai/CLIP/tree/main)).\n- **Resources for more information:** Check out our [GitHub Repository](https://github.com/Stability-AI/generative-models) and the [SDXL report on arXiv](https://arxiv.org/abs/2307.01952).\n\n### Model Sources\n\nFor research purposes, we recommned our `generative-models` Github repository (https://github.com/Stability-AI/generative-models), which implements the most popoular diffusion frameworks (both training and inference) and for which new functionalities like distillation will be added over time.\n[Clipdrop](https://clipdrop.co/stable-diffusion) provides free SDXL inference.\n\n- **Repository:** https://github.com/Stability-AI/generative-models\n- **Demo:** https://clipdrop.co/stable-diffusion\n\n\n## Evaluation\n![comparison](comparison.png)\nThe chart above evaluates user preference for SDXL (with and without refinement) over SDXL 0.9 and Stable Diffusion 1.5 and 2.1. \nThe SDXL base model performs significantly better than the previous variants, and the model combined with the refinement module achieves the best overall performance.\n\n\n### 🧨 Diffusers \n\nMake sure to upgrade diffusers to >= 0.18.0:\n```\npip install diffusers --upgrade\n```\n\nIn addition make sure to install `transformers`, `safetensors`, `accelerate` as well as the invisible watermark:\n```\npip install invisible_watermark transformers accelerate safetensors\n```\n\nYon can then use the refiner to improve images.\n\n```py\nimport torch\nfrom diffusers import StableDiffusionXLImg2ImgPipeline\nfrom diffusers.utils import load_image\n\npipe = StableDiffusionXLImg2ImgPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-refiner-1.0\", torch_dtype=torch.float16, variant=\"fp16\", use_safetensors=True\n)\npipe = pipe.to(\"cuda\")\nurl = \"https://huggingface.co/datasets/patrickvonplaten/images/resolve/main/aa_xl/000000009.png\"\n\ninit_image = load_image(url).convert(\"RGB\")\nprompt = \"a photo of an astronaut riding a horse on mars\"\nimage = pipe(prompt, image=init_image).images\n```\n\nWhen using `torch >= 2.0`, you can improve the inference speed by 20-30% with torch.compile. Simple wrap the unet with torch compile before running the pipeline:\n```py\npipe.unet = torch.compile(pipe.unet, mode=\"reduce-overhead\", fullgraph=True)\n```\n\nIf you are limited by GPU VRAM, you can enable *cpu offloading* by calling `pipe.enable_model_cpu_offload`\ninstead of `.to(\"cuda\")`:\n\n```diff\n- pipe.to(\"cuda\")\n+ pipe.enable_model_cpu_offload()\n```\n\nFor more advanced use cases, please have a look at [the docs](https://huggingface.co/docs/diffusers/main/en/api/pipelines/stable_diffusion/stable_diffusion_xl).\n\n## Uses\n\n### Direct Use\n\nThe model is intended for research purposes only. Possible research areas and tasks include\n\n- Generation of artworks and use in design and other artistic processes.\n- Applications in educational or creative tools.\n- Research on generative models.\n- Safe deployment of models which have the potential to generate harmful content.\n- Probing and understanding the limitations and biases of generative models.\n\nExcluded uses are described below.\n\n### Out-of-Scope Use\n\nThe model was not trained to be factual or true representations of people or events, and therefore using the model to generate such content is out-of-scope for the abilities of this model.\n\n## Limitations and Bias\n\n### Limitations\n\n- The model does not achieve perfect photorealism\n- The model cannot render legible text\n- The model struggles with more difficult tasks which involve compositionality, such as rendering an image corresponding to “A red cube on top of a blue sphere”\n- Faces and people in general may not be generated properly.\n- The autoencoding part of the model is lossy.\n\n### Bias\nWhile the capabilities of image generation models are impressive, they can also reinforce or exacerbate social biases.",
+              "extracted_code": "import torch\nfrom diffusers import StableDiffusionXLImg2ImgPipeline\nfrom diffusers.utils import load_image\n\npipe = StableDiffusionXLImg2ImgPipeline.from_pretrained(\n    \"stabilityai/stable-diffusion-xl-refiner-1.0\", torch_dtype=torch.float16, variant=\"fp16\", use_safetensors=True\n)\npipe = pipe.to(\"cuda\")\nurl = \"https://huggingface.co/datasets/patrickvonplaten/images/resolve/main/aa_xl/000000009.png\"\n\ninit_image = load_image(url).convert(\"RGB\")\nprompt = \"a photo of an astronaut riding a horse on mars\"\nimage = pipe(prompt, image=init_image).images\n"
+            },
+            {
+              "id": "openai/clip-vit-large-patch14",
+              "author": "openai",
+              "sha": "32bd64288804d66eefd0ccbe215aa642df71cc41",
+              "created_at": "2022-03-02T23:29:05+00:00",
+              "last_modified": "2023-09-15T15:49:35+00:00",
+              "private": false,
+              "gated": false,
+              "disabled": false,
+              "downloads": 8158984,
+              "likes": 1858,
+              "siblings": [
+                {
+                  "rfilename": ".gitattributes"
+                },
+                {
+                  "rfilename": "README.md"
+                },
+                {
+                  "rfilename": "config.json"
+                },
+                {
+                  "rfilename": "flax_model.msgpack"
+                },
+                {
+                  "rfilename": "merges.txt"
+                },
+                {
+                  "rfilename": "model.safetensors"
+                },
+                {
+                  "rfilename": "preprocessor_config.json"
+                },
+                {
+                  "rfilename": "pytorch_model.bin"
+                },
+                {
+                  "rfilename": "special_tokens_map.json"
+                },
+                {
+                  "rfilename": "tf_model.h5"
+                }
+              ],
+              "card_data": {
+                "language": [],
+                "tags": [
+                  "vision"
+                ],
+                "datasets": [],
+                "task_categories": [],
+                "size_categories": [],
+                "metrics": [],
+                "widget": [
+                  {
+                    "src": "https://huggingface.co/datasets/mishig/sample_images/resolve/main/cat-dog-music.png",
+                    "candidate_labels": "playing music, playing sports",
+                    "example_title": "Cat & Dog"
+                  }
+                ]
+              },
+              "tags": [
+                "transformers",
+                "pytorch",
+                "tf",
+                "jax",
+                "safetensors",
+                "clip",
+                "zero-shot-image-classification",
+                "vision",
+                "arxiv:2103.00020",
+                "arxiv:1908.04913",
+                "endpoints_compatible",
+                "region:us"
+              ],
+              "pipeline_tag": "zero-shot-image-classification",
+              "library_name": "transformers",
+              "readme": "---\ntags:\n- vision\nwidget:\n- src: https://huggingface.co/datasets/mishig/sample_images/resolve/main/cat-dog-music.png\n  candidate_labels: playing music, playing sports\n  example_title: Cat & Dog\n---\n\n# Model Card: CLIP\n\nDisclaimer: The model card is taken and modified from the official CLIP repository, it can be found [here](https://github.com/openai/CLIP/blob/main/model-card.md).\n\n## Model Details\n\nThe CLIP model was developed by researchers at OpenAI to learn about what contributes to robustness in computer vision tasks. The model was also developed to test the ability of models to generalize to arbitrary image classification tasks in a zero-shot manner. It was not developed for general model deployment - to deploy models like CLIP, researchers will first need to carefully study their capabilities in relation to the specific context they’re being deployed within.\n\n### Model Date\n\nJanuary 2021\n\n### Model Type\n\nThe base model uses a ViT-L/14 Transformer architecture as an image encoder and uses a masked self-attention Transformer as a text encoder. These encoders are trained to maximize the similarity of (image, text) pairs via a contrastive loss.\n\nThe original implementation had two variants: one using a ResNet image encoder and the other using a Vision Transformer. This repository has the variant with the Vision Transformer.\n\n\n### Documents\n\n- [Blog Post](https://openai.com/blog/clip/)\n- [CLIP Paper](https://arxiv.org/abs/2103.00020)\n\n\n### Use with Transformers\n\n```python\nfrom PIL import Image\nimport requests\n\nfrom transformers import CLIPProcessor, CLIPModel\n\nmodel = CLIPModel.from_pretrained(\"openai/clip-vit-large-patch14\")\nprocessor = CLIPProcessor.from_pretrained(\"openai/clip-vit-large-patch14\")\n\nurl = \"http://images.cocodataset.org/val2017/000000039769.jpg\"\nimage = Image.open(requests.get(url, stream=True).raw)\n\ninputs = processor(text=[\"a photo of a cat\", \"a photo of a dog\"], images=image, return_tensors=\"pt\", padding=True)\n\noutputs = model(**inputs)\nlogits_per_image = outputs.logits_per_image # this is the image-text similarity score\nprobs = logits_per_image.softmax(dim=1) # we can take the softmax to get the label probabilities\n```\n\n\n## Model Use\n\n### Intended Use\n\nThe model is intended as a research output for research communities. We hope that this model will enable researchers to better understand and explore zero-shot, arbitrary image classification. We also hope it can be used for interdisciplinary studies of the potential impact of such models - the CLIP paper includes a discussion of potential downstream impacts to provide an example for this sort of analysis.\n\n#### Primary intended uses\n\nThe primary intended users of these models are AI researchers.\n\nWe primarily imagine the model will be used by researchers to better understand robustness, generalization, and other capabilities, biases, and constraints of computer vision models.\n\n### Out-of-Scope Use Cases\n\n**Any** deployed use case of the model - whether commercial or not - is currently out of scope. Non-deployed use cases such as image search in a constrained environment, are also not recommended unless there is thorough in-domain testing of the model with a specific, fixed class taxonomy. This is because our safety assessment demonstrated a high need for task specific testing especially given the variability of CLIP’s performance with different class taxonomies. This makes untested and unconstrained deployment of the model in any use case currently potentially harmful. \n\nCertain use cases which would fall under the domain of surveillance and facial recognition are always out-of-scope regardless of performance of the model. This is because the use of artificial intelligence for tasks such as these can be premature currently given the lack of testing norms and checks to ensure its fair use.\n\nSince the model has not been purposefully trained in or evaluated on any languages other than English, its use should be limited to English language use cases.\n\n\n\n## Data\n\nThe model was trained on publicly available image-caption data. This was done through a combination of crawling a handful of websites and using commonly-used pre-existing image datasets such as [YFCC100M](http://projects.dfki.uni-kl.de/yfcc100m/). A large portion of the data comes from our crawling of the internet. This means that the data is more representative of people and societies most connected to the internet which tend to skew towards more developed nations, and younger, male users.\n\n### Data Mission Statement\n\nOur goal with building this dataset was to test out robustness and generalizability in computer vision tasks. As a result, the focus was on gathering large quantities of data from different publicly-available internet data sources. The data was gathered in a mostly non-interventionist manner. However, we only crawled websites that had policies against excessively violent and adult images and allowed us to filter out such content. We do not intend for this dataset to be used as the basis for any commercial or deployed model and will not be releasing the dataset.\n\n\n\n## Performance and Limitations\n\n### Performance\n\nWe have evaluated the performance of CLIP on a wide range of benchmarks across a variety of computer vision datasets such as OCR to texture recognition to fine-grained classification. The paper describes model performance on the following datasets:\n\n- Food101\n- CIFAR10   \n- CIFAR100   \n- Birdsnap\n- SUN397\n- Stanford Cars\n- FGVC Aircraft\n- VOC2007\n- DTD\n- Oxford-IIIT Pet dataset\n- Caltech101\n- Flowers102\n- MNIST   \n- SVHN \n- IIIT5K   \n- Hateful Memes   \n- SST-2\n- UCF101\n- Kinetics700\n- Country211\n- CLEVR Counting\n- KITTI Distance\n- STL-10\n- RareAct\n- Flickr30\n- MSCOCO\n- ImageNet\n- ImageNet-A\n- ImageNet-R\n- ImageNet Sketch\n- ObjectNet (ImageNet Overlap)\n- Youtube-BB\n- ImageNet-Vid\n\n## Limitations\n\nCLIP and our analysis of it have a number of limitations. CLIP currently struggles with respect to certain tasks such as fine grained classification and counting objects. CLIP also poses issues with regards to fairness and bias which we discuss in the paper and briefly in the next section. Additionally, our approach to testing CLIP also has an important limitation- in many cases we have used linear probes to evaluate the performance of CLIP and there is evidence suggesting that linear probes can underestimate model performance.\n\n### Bias and Fairness\n\nWe find that the performance of CLIP - and the specific biases it exhibits - can depend significantly on class design and the choices one makes for categories to include and exclude. We tested the risk of certain kinds of denigration with CLIP by classifying images of people from [Fairface](https://arxiv.org/abs/1908.04913) into crime-related and non-human animal categories. We found significant disparities with respect to race and gender. Additionally, we found that these disparities could shift based on how the classes were constructed. (Details captured in the Broader Impacts Section in the paper).\n\nWe also tested the performance of CLIP on gender, race and age classification using the Fairface dataset (We default to using race categories as they are constructed in the Fairface dataset.) in order to assess quality of performance across different demographics. We found accuracy >96% across all races for gender classification with ‘Middle Eastern’ having the highest accuracy (98.4%) and ‘White’ having the lowest (96.5%). Additionally, CLIP averaged ~93% for racial classification and ~63% for age classification. Our use of evaluations to test for gender, race and age classification as well as denigration harms is simply to evaluate performance of the model across people and surface potential risks and not to demonstrate an endorsement/enthusiasm for such tasks.\n\n\n\n## Feedback\n\n### Where to send questions or comments about the model\n\nPlease use [this Google Form](https://forms.gle/Uv7afRH5dvY34ZEs9)",
+              "extracted_code": "from PIL import Image\nimport requests\n\nfrom transformers import CLIPProcessor, CLIPModel\n\nmodel = CLIPModel.from_pretrained(\"openai/clip-vit-large-patch14\")\nprocessor = CLIPProcessor.from_pretrained(\"openai/clip-vit-large-patch14\")\n\nurl = \"http://images.cocodataset.org/val2017/000000039769.jpg\"\nimage = Image.open(requests.get(url, stream=True).raw)\n\ninputs = processor(text=[\"a photo of a cat\", \"a photo of a dog\"], images=image, return_tensors=\"pt\", padding=True)\n\noutputs = model(**inputs)\nlogits_per_image = outputs.logits_per_image # this is the image-text similarity score\nprobs = logits_per_image.softmax(dim=1) # we can take the softmax to get the label probabilities"
+            }
+          ],
+          "datasets": [
+            {
+              "id": "shunk031/DrawBench",
+              "author": "shunk031",
+              "sha": "6324c60311a1f0754c4c4ff00da36d8e77b6ea29",
+              "created_at": "2023-09-27T13:10:40+00:00",
+              "last_modified": "2023-09-27T13:13:31+00:00",
+              "private": false,
+              "gated": false,
+              "disabled": false,
+              "downloads": 423,
+              "likes": 3,
+              "siblings": [
+                {
+                  "rfilename": ".github/workflows/ci.yaml"
+                },
+                {
+                  "rfilename": ".github/workflows/push_to_hub.yaml"
+                },
+                {
+                  "rfilename": ".gitignore"
+                },
+                {
+                  "rfilename": "DrawBench.py"
+                },
+                {
+                  "rfilename": "README.md"
+                },
+                {
+                  "rfilename": "poetry.lock"
+                },
+                {
+                  "rfilename": "pyproject.toml"
+                },
+                {
+                  "rfilename": "tests/DrawBench_test.py"
+                },
+                {
+                  "rfilename": "tests/__init__.py"
+                }
+              ],
+              "card_data": {
+                "license": [
+                  "unknown"
+                ],
+                "language": [
+                  "en"
+                ],
+                "tags": [],
+                "datasets": [],
+                "task_categories": [
+                  "text-to-image"
+                ],
+                "size_categories": [
+                  "n<1K"
+                ],
+                "metrics": [],
+                "widget": []
+              },
+              "tags": [
+                "task_categories:text-to-image",
+                "annotations_creators:crowdsourced",
+                "multilinguality:monolingual",
+                "source_datasets:original",
+                "language:en",
+                "license:unknown",
+                "size_categories:n<1K",
+                "modality:text",
+                "library:datasets",
+                "library:mlcroissant",
+                "arxiv:2205.11487",
+                "region:us"
+              ],
+              "readme": "---\nannotations_creators:\n- crowdsourced\nlanguage:\n- en\nlanguage_creators: []\nlicense:\n- unknown\nmultilinguality:\n- monolingual\npretty_name: DrawBench\nsize_categories:\n- n<1K\nsource_datasets:\n- original\ntags: []\ntask_categories:\n- text-to-image\ntask_ids: []\n---\n\n# Dataset Card for DrawBench\n\n## Table of Contents\n- [Dataset Card Creation Guide](#dataset-card-creation-guide)\n  - [Table of Contents](#table-of-contents)\n  - [Dataset Description](#dataset-description)\n    - [Dataset Summary](#dataset-summary)\n    - [Supported Tasks and Leaderboards](#supported-tasks-and-leaderboards)\n    - [Languages](#languages)\n  - [Dataset Structure](#dataset-structure)\n    - [Data Instances](#data-instances)\n    - [Data Fields](#data-fields)\n    - [Data Splits](#data-splits)\n  - [Dataset Creation](#dataset-creation)\n    - [Curation Rationale](#curation-rationale)\n    - [Source Data](#source-data)\n      - [Initial Data Collection and Normalization](#initial-data-collection-and-normalization)\n      - [Who are the source language producers?](#who-are-the-source-language-producers)\n    - [Annotations](#annotations)\n      - [Annotation process](#annotation-process)\n      - [Who are the annotators?](#who-are-the-annotators)\n    - [Personal and Sensitive Information](#personal-and-sensitive-information)\n  - [Considerations for Using the Data](#considerations-for-using-the-data)\n    - [Social Impact of Dataset](#social-impact-of-dataset)\n    - [Discussion of Biases](#discussion-of-biases)\n    - [Other Known Limitations](#other-known-limitations)\n  - [Additional Information](#additional-information)\n    - [Dataset Curators](#dataset-curators)\n    - [Licensing Information](#licensing-information)\n    - [Citation Information](#citation-information)\n    - [Contributions](#contributions)\n\n## Dataset Description\n\n- **Homepage:** https://imagen.research.google/\n- **Repository:** https://github.com/shunk031/huggingface-datasets_DrawBench\n- **Paper:** https://arxiv.org/abs/2205.11487\n\n### Dataset Summary\n\n[More Information Needed]\n\n### Supported Tasks and Leaderboards\n\n[More Information Needed]\n\n### Languages\n\nThe language data in DrawBench is in English (BCP-47 en-US).\n\n## Dataset Structure\n\n### Data Instances\n\n[More Information Needed]\n\n### Data Fields\n\n[More Information Needed]\n\n### Data Splits\n\n[More Information Needed]\n\n## Dataset Creation\n\n### Curation Rationale\n\n[More Information Needed]\n\n### Source Data\n\n[More Information Needed]\n\n#### Initial Data Collection and Normalization\n\n[More Information Needed]\n\n#### Who are the source language producers?\n\n[More Information Needed]\n\n### Annotations\n\n[More Information Needed]\n\n#### Annotation process\n\n[More Information Needed]\n\n#### Who are the annotators?\n\n[More Information Needed]\n\n### Personal and Sensitive Information\n\n[More Information Needed]\n\n## Considerations for Using the Data\n\n### Social Impact of Dataset\n\n[More Information Needed]\n\n### Discussion of Biases\n\n[More Information Needed]\n\n### Other Known Limitations\n\n[More Information Needed]\n\n## Additional Information\n\n### Dataset Curators\n\n[More Information Needed]\n\n### Licensing Information\n\n[More Information Needed]\n\n### Citation Information\n\n```bibtex\n@article{saharia2022photorealistic,\n  title={Photorealistic text-to-image diffusion models with deep language understanding},\n  author={Saharia, Chitwan and Chan, William and Saxena, Saurabh and Li, Lala and Whang, Jay and Denton, Emily L and Ghasemipour, Kamyar and Gontijo Lopes, Raphael and Karagol Ayan, Burcu and Salimans, Tim and others},\n  journal={Advances in Neural Information Processing Systems},\n  volume={35},\n  pages={36479--36494},\n  year={2022}\n}\n```\n\n### Contributions\n\nThanks to Google Research, Brain Team for creating this dataset.\n",
+              "extracted_code": ""
+            }
+          ]
+        }
+      }
     }
   },
   "idea_info_history": [
